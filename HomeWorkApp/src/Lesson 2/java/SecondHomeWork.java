@@ -4,7 +4,7 @@ public class SecondHomeWork {
         secondTask(-10);
         System.out.println(thirdTask(-10));
         fourTask("Привет", 3);
-        System.out.println(theFifthTask(100));
+        System.out.println(theFifthTask(400));
     }
 
     public static boolean firstTask(int a, int b) {
@@ -21,11 +21,7 @@ public class SecondHomeWork {
     }
 
     public static boolean thirdTask(int a) {
-        if (a < 0) {
-            return true;
-        }
-            return false;
-
+        return a < 0;
     }
 
     public static void fourTask (String a, int b) {
@@ -35,10 +31,8 @@ public class SecondHomeWork {
     }
 
     public static boolean theFifthTask(int year) {
-        if ((year % 4 == 0) && (year % 100 != 0) || year % 400 == 0) {
-            return true;
-        }
-        return false;
+        return (year % 4 == 0) && (year % 100 != 0) || year % 400 == 0;
+
     }
 
 }
