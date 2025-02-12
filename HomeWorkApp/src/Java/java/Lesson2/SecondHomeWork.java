@@ -1,3 +1,5 @@
+package Lesson2;
+
 public class SecondHomeWork {
     public static void main(String[] args) {
         System.out.println(firstTask(20, 10));
