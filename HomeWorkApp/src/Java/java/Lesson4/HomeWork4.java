@@ -204,16 +204,22 @@ import java.util.Scanner;
             return map[y][x] == emptyCell;
         }
 
+        public static char getVisibleCell(int y, int x) {
+            if (y == playerY && x == playerX) {
+                return player;
+            }
+                if (Math.abs(y - playerY) <= 1 && Math.abs(x - playerX) <= 1) {
+                    return map[y][x];
+                }
+            return emptyCell;
+        }
+
         public static void printMap() {
             System.out.println("========== MAP ==========");
             for (int i = 0; i < mapHeight; i++) {
                 for (int j = 0; j < mapWidth; j++) {
-                    // System.out.print(map[i][j] + "|");
-                    if (i == playerY && j == playerX) {
-                        System.out.print(player + "|");
-                    } else {
-                        System.out.print(emptyCell + "|");
-                    }
+                    System.out.print(getVisibleCell(i,j) + "|");
+
                 }
                 System.out.println();
             }
