@@ -17,6 +17,7 @@ import java.util.Scanner;
         public static final int moveDown = 2;
 
         public static char[][] map;
+        public static char[][] invisibleMap;
         public static int mapWidth;
         public static int mapHeight;
         public static int minSizeMap = 3;
@@ -47,12 +48,12 @@ import java.util.Scanner;
             createHealthPack();
             createEnemies();
             createExit();
-            printMap();
+           // printMap();
 
             while (true) {
-                directionPlayer();
+                updateVisibleMap();
                 printMap();
-
+                directionPlayer();
                 if (playerHealth <= 0) {
                     System.out.println("Player Loss!");
                     break;
@@ -105,21 +106,23 @@ import java.util.Scanner;
         }
 
         public static void playerNextMoveAction(int currentX, int currentY, int nextX, int nextY) {
-            if(map[nextY][nextX] == healthPack) {
+            if(invisibleMap[nextY][nextX] == healthPack) {
                 playerHealth += healthPackValue;
                 System.out.printf("Player HP +%s. Now hp is %s\n", healthPackValue, playerHealth);
             }
-            if (map[nextY][nextX] == enemy) {
+            if (invisibleMap[nextY][nextX] == enemy) {
                 playerHealth -= enemyPower;
                 System.out.printf("Warning! Player HP -%s. Now hp is %s\n", enemyPower, playerHealth);
             }
-            if (map[nextY][nextX] == exitCell) {
+            if (invisibleMap[nextY][nextX] == exitCell) {
                 isFoundExit = true;
                 System.out.println("Player found exit!");
             }
-
             map[playerY][playerX] = player;
             map[currentY][currentX] = emptyCell;
+
+            invisibleMap[playerY][playerX] = player;
+            invisibleMap[currentY][currentX] = emptyCell;
         }
 
         public static boolean isValidMove(int currentX, int currentY, int nextX, int nextY) {
@@ -136,10 +139,12 @@ import java.util.Scanner;
             mapWidth = getRandomValue(minSizeMap, maxSizeMap);
             mapHeight = getRandomValue(minSizeMap, maxSizeMap);
             map = new char[mapHeight][mapWidth];
+            invisibleMap = new char[mapHeight][mapWidth];
 
             for (int i = 0; i < mapHeight; i++) {
                 for (int j = 0; j < mapWidth; j++) {
                     map[i][j] = emptyCell;
+                    invisibleMap [i][j] = emptyCell;
                 }
             }
 //        System.out.println("Map created. Size " + mapHeight + "x" + mapWidth);
@@ -149,6 +154,7 @@ import java.util.Scanner;
         public static void createPlayer() {
             playerX = getRandomValue(0, mapWidth - 1);
             playerY = getRandomValue(0, mapHeight - 1);
+            invisibleMap[playerY][playerY] = player;
             map[playerY][playerX] = player;
             System.out.printf("Player spawn in [%s;%s]\n", playerY, playerX);
         }
@@ -163,7 +169,8 @@ import java.util.Scanner;
                     x = random.nextInt(mapWidth);
                     y = random.nextInt(mapHeight);
                 } while (!isEmptyCell(y, x));
-                map[y][x] = healthPack;
+               // map[y][x] = healthPack;
+                invisibleMap [y][x] = healthPack;
             }
             System.out.printf("HealthPacks spawn. Count: %s \n", count);
         }
@@ -180,7 +187,8 @@ import java.util.Scanner;
                     x = random.nextInt(mapWidth);
                     y = random.nextInt(mapHeight);
                 } while (!isEmptyCell(y, x));
-                map[y][x] = enemy;
+               //  map[y][x] = enemy;
+                invisibleMap [y][x] = enemy;
             }
             System.out.printf("Enemies spawn. Count: %s. Health: %s. Power: %s \n",
                     enemyCount,
@@ -196,7 +204,8 @@ import java.util.Scanner;
                 x = random.nextInt(mapWidth);
                 y = random.nextInt(mapHeight);
             } while (!isEmptyCell(y, x));
-            map[y][x] = exitCell;
+           // map[y][x] = exitCell;
+            invisibleMap [y][x] = exitCell;
             System.out.println("Exit spawn");
         }
 
@@ -204,21 +213,20 @@ import java.util.Scanner;
             return map[y][x] == emptyCell;
         }
 
-        public static char getVisibleCell(int y, int x) {
-            if (y == playerY && x == playerX) {
-                return player;
-            }
-                if (Math.abs(y - playerY) <= 1 && Math.abs(x - playerX) <= 1) {
-                    return map[y][x];
+        public static void updateVisibleMap() {
+            for (int i = 0; i < mapHeight; i++) {
+                for (int j = 0; j < mapWidth; j++) {
+                    map[i][j] = emptyCell;
                 }
-            return emptyCell;
+            }
+            map[playerY][playerX] = player;
         }
 
         public static void printMap() {
             System.out.println("========== MAP ==========");
             for (int i = 0; i < mapHeight; i++) {
                 for (int j = 0; j < mapWidth; j++) {
-                    System.out.print(getVisibleCell(i,j) + "|");
+                    System.out.print(map[i][j] + "|");
 
                 }
                 System.out.println();
@@ -229,8 +237,6 @@ import java.util.Scanner;
         public static int getRandomValue(int minBound, int maxBound) {
             return random.nextInt(maxBound - minBound + 1) + minBound;
         }
-
-
     }
 
 /*
