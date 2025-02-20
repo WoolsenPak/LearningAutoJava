@@ -2,7 +2,7 @@ package HomeWork.Lesson6;
 
 public class Cat extends Pets {
     private int maxRunDistance;
-    private static int catCount = 0;
+    public static int catCount = 0;
 
     public Cat(String name, int maxRunDistance) {
         super(name);
