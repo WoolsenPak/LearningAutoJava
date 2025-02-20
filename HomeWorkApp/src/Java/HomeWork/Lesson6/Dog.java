@@ -1,31 +1,38 @@
 package HomeWork.Lesson6;
 
 public class Dog extends Pets {
-    private final int MAX_RUN_DISTANCE = 500;
-    private final int MAX_SWIM_DISTANCE = 10;
+    private int maxRunDistance;
+    private int maxSwimDistance;
     private static int dogCount = 0;
 
-    public Dog(String name) {
+    public Dog(String name, int maxRunDistance, int maxSwimDistance) {
         super(name);
+        this.maxRunDistance = maxRunDistance;
+        this.maxSwimDistance = maxSwimDistance;
         dogCount++;
     }
 
+    public Dog(String name) {
+        this(name, 500, 10);
+    }
+
     @Override
-    public void run (int distance) {
-        if (distance <= MAX_RUN_DISTANCE) {
-            System.out.println(getName() + " пробежал " + distance + " м.");
+    public String run (int distance) {
+        if (distance <= maxRunDistance) {
+            return getName() + " пробежал " + distance + " м.";
         }
         else {
-            System.out.println(getName() + " не сможет пробежать :( " + distance + " м.");
+            return getName() + " не сможет пробежать :( " + distance + " м.";
         }
     }
 
-    public void swim (int distance) {
-        if (distance <= MAX_SWIM_DISTANCE) {
-            System.out.println(getName() + " проплыл " + distance + " м.");
+    @Override
+    public String swim (int distance) {
+        if (distance <= maxSwimDistance) {
+            return getName() + " проплыл " + distance + " м.";
         }
         else {
-            System.out.println(getName() + " не сможет проплыть :( " + distance + " м.");
+            return getName() + " не сможет проплыть :( " + distance + " м.";
         }
     }
 

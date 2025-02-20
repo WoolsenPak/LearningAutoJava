@@ -1,26 +1,31 @@
 package HomeWork.Lesson6;
 
 public class Cat extends Pets {
-    private final int MAX_RUN_DISTANCE = 200;
+    private int maxRunDistance;
     private static int catCount = 0;
 
-    public Cat(String name) {
+    public Cat(String name, int maxRunDistance) {
         super(name);
+        this.maxRunDistance = maxRunDistance;;
         catCount++;
     }
 
+    public Cat (String name) {
+        this(name, 200);
+    }
+
     @Override
-    public void run(int distance) {
-        if (distance <= MAX_RUN_DISTANCE) {
-            System.out.println(getName() + " пробежал " + distance + " м.");
+    public String run(int distance) {
+        if (distance <= maxRunDistance) {
+            return getName() + " пробежал " + distance + " м.";
         } else {
-            System.out.println(getName() + " не cможет пробежать :( " + distance + " м.");
+            return getName() + " не сможет пробежать :( " + distance + " м.";
         }
     }
 
     @Override
-    public void swim(int distance) {
-        System.out.println(getName() + " не умеет плавать :(");
+    public String swim(int distance) {
+        return getName() + " не умеет плавать.";
     }
 
 
