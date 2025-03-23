@@ -39,7 +39,7 @@ public class main {
                 try {
                     sum += Integer.parseInt(array[i][j]);
                 } catch (NumberFormatException e) {
-                    throw new MyArrayDataException();
+                    throw new MyArrayDataException("Array can work only with numbers, error: [" + i + "]" + "[" + j + "]");
                 }
             }
         }
