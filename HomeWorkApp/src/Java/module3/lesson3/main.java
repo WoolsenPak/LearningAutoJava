@@ -14,36 +14,52 @@ package module3.lesson3;
 
 public class main {
     static int sum = 0;
+    static int maxSize = 4;
 
     public static void main(String[] args) throws MyArrayDataException, MyArraySizeException {
-        String[][] array = {{"1","1","1","1"},
-                            {"1","1","1","1"},
-                            {"1","1","1","1"},
-                            {"1","1","1","1"}};
+        String[][] array =
+                {{"1", "1", "1", "1"},
+                {"1", "1", "1", "1"},
+                {"1", "1", "1", "1"},
+                {"1", "1", "1", "1"}};
 
-        arrays(array);
+        try {
+            System.out.println("Sum of numbers > " + sumArray(array));
+        } catch (MyArraySizeException | MyArrayDataException e) {
+            System.out.println(e.getMessage());
+        }
         printTwoArrays(array);
     }
 
-    public static void arrays(String[][] array) throws MyArraySizeException, MyArrayDataException {
+
+    public static int sumArray(String[][] array) throws MyArraySizeException, MyArrayDataException {
+        sizeArray(array);
 
         for (int i = 0; i < array.length; i++) {
-            if (array.length > 4) {
-                throw new MyArraySizeException();
-            }
+            for (int j = 0; j < array[i].length; j++)
 
-            for (int j = 0; j < array[i].length; j++) {
-                if (array[i].length > 4) {
-                    throw new MyArraySizeException();
-                }
                 try {
                     sum += Integer.parseInt(array[i][j]);
                 } catch (NumberFormatException e) {
                     throw new MyArrayDataException("Array can work only with numbers, error: [" + i + "]" + "[" + j + "]");
                 }
+        }
+        return sum;
+    }
+
+
+    public static void sizeArray(String[][] array) throws MyArraySizeException {
+
+        for (int i = 0; i < array.length; i++) {
+            if (array.length > maxSize) {
+                throw new MyArraySizeException("Array length must be " + maxSize + " but is " + array.length);
+            }
+            for (int j = 0; j < array[i].length; j++) {
+                if (array[i].length > maxSize) {
+                    throw new MyArraySizeException("Array length must be " + maxSize + " but is " + array[i].length);
+                }
             }
         }
-        System.out.println("Sum > " + sum);
     }
 
 
