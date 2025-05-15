@@ -1,0 +1,27 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="SuiteOne" parallel="methods" thread-count="3">
+
+    <test name = "Div Test">
+        <parameter name="a" value="6"/>
+        <parameter name="b" value="2"/>
+            <classes>
+                <class name="module4.HomeWork2UnitTests.DivCalculatorTest"/>
+            </classes>
+    </test>
+
+    <test name = "Mult Test">
+        <parameter name="a" value = "1"/>
+        <parameter name="b" value = "2"/>
+        <classes>
+            <class name="module4.HomeWork2UnitTests.MultCalculatorTest"/>
+        </classes>
+    </test>
+
+    <test name = "Sqrt Test">
+        <parameter name="a" value = "144"/>
+        <classes>
+            <class name="module4.HomeWork2UnitTests.SqrtCalculatorTest"/>
+        </classes>
+    </test>
+</suite>
