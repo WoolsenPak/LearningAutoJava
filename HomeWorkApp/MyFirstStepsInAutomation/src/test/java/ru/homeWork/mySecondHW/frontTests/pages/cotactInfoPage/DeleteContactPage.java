@@ -12,11 +12,6 @@ import ru.homeWork.mySecondHW.frontTests.pages.mainPage.MainPage;
 
 import static com.codeborne.selenide.Selenide.$;
 
-/**
- * Created by Aleksandr Gladkov [Anticisco]
- * Date: 29.04.2025
- */
-
 public class DeleteContactPage extends BasePage {
 
     private static final Logger logger = LoggerFactory.getLogger(DeleteContactPage.class);

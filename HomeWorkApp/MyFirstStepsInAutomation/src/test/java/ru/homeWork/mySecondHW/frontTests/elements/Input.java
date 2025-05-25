@@ -11,15 +11,18 @@ public class Input extends UiComponent {
         super(selfSelector);
     }
 
-    public void fillData(String data) {
+    public Input fillData(String data) {
         element.click();
         String inputName = element.getAttribute("placeholder");
         element.sendKeys(data);
         logger.info("User click [Input:{}] and send data [{}]", inputName, data);
+        return this;
     }
 
-    public void clear() {
+    public Input clear() {
+        String inputName = element.getAttribute("placeholder");
         element.clear();
+        return this;
     }
 
     public void clickCheckBox() {
