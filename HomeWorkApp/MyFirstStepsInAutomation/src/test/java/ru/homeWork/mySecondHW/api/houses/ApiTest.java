@@ -17,6 +17,8 @@ public class ApiTest {
 
     private static final String NEW_NAME_TEMPLATE = "House_%s";
     private static final String CHANGE_TEMPLATE = "Change_%s";
+    private static final int SUCCESS_STATUS = 1;
+    private static final int COUNT_OF_GENERATED_HOUSES = 2;
 
     private final HouseConnector houseConnector = new HouseConnector();
     private final CatConnector catConnector = new CatConnector();
@@ -33,10 +35,8 @@ public class ApiTest {
 
         houseEntity = HouseDto.builder()
                 .name(String.format(NEW_NAME_TEMPLATE, System.currentTimeMillis()))
-                .cats(Collections.emptyList())
                 .build();
     }
-
 
     @Test(priority = 1)
     public void apiDeleteAllHousesTest() {
@@ -44,7 +44,7 @@ public class ApiTest {
 
         assertThat(statusDeleteAllHouses.getStatus())
                 .as("Check Delete Status")
-                .isEqualTo(1);
+                .isEqualTo(SUCCESS_STATUS);
     }
 
     @Test(priority = 2)
@@ -57,7 +57,7 @@ public class ApiTest {
 
         assertThat(houseNameList)
                 .as("Check generate new houses")
-                .hasSize(2);
+                .hasSize(COUNT_OF_GENERATED_HOUSES);
     }
 
     @Test(priority = 3)

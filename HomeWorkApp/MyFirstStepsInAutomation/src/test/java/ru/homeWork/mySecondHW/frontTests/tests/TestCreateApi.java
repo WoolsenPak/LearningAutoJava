@@ -22,11 +22,13 @@ public class TestCreateApi extends BaseTestClass {
     private ApiEntity apiEntity;
     private MainPage mainPage;
 
+    private static final String IP_ADDRESS = "172.18.0.33";
+
     @BeforeClass
     public void prepareCondition() {
         apiEntity = new ApiEntity();
         apiEntity.withName(String.format("name" + faker.number().digits(8)))
-                .withIpAddress("172.18.0.33");
+                .withIpAddress(IP_ADDRESS);
     }
 
     @Test(priority = 1)

@@ -10,11 +10,6 @@ import java.util.Random;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Created by Aleksandr Gladkov [Anticisco]
- * Date: 16.05.2025
- */
-
 public class ApiTest {
 
     private static final Random RANDOM = new Random();
@@ -22,6 +17,8 @@ public class ApiTest {
     private static final String NEW_NAME_TEMPLATE = "Name_%s";
     private static final String NEW_COLOR_TEMPLATE = "Color_%s";
     private static final String CHANGE_TEMPLATE = "Change_%s";
+    private static final int COUNT_OF_GENERATED_CATS = 10;
+    private static final int SUCCESS_STATUS = 1;
 
     private final CatConnector catConnector = new CatConnector();
 
@@ -43,7 +40,7 @@ public class ApiTest {
 
         assertThat(statusDeleteAllCat.getStatus())
                 .as("Check Delete Status")
-                .isEqualTo(1);
+                .isEqualTo(SUCCESS_STATUS);
     }
 
     @Test(priority = 2)
@@ -56,7 +53,7 @@ public class ApiTest {
 
         assertThat(catNameList)
                 .as("Check generate new cats")
-                .hasSize(10);
+                .hasSize(COUNT_OF_GENERATED_CATS);
     }
 
     @Test(priority = 3)

@@ -57,7 +57,7 @@ public class SingleApiPage extends BasePage {
         if (!isUpdateApiState) {
             throw new InvalidElementStateException("Wrong Page State: Add New ApiToken");
         }
-        cosmeticName.clear();
+
         cosmeticName.fillData(apiEntity.getName());
         return this;
     }

@@ -7,7 +7,6 @@ import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class Table extends UiComponent {
 
     private static final Logger logger = LoggerFactory.getLogger(Table.class);

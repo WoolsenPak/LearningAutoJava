@@ -6,13 +6,7 @@ import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperType;
 import ru.homeWork.mySecondHW.api.cats.models.*;
 
-
 import java.util.List;
-
-/**
- * Created by Aleksandr Gladkov [Anticisco]
- * Date: 16.05.2025
- */
 
 public class CatConnector {
 
@@ -130,7 +124,5 @@ public class CatConnector {
     public StatusDto deleteCatById(CatDto cat) {
         return deleteCatById(cat.getId());
     }
-
-
 }
 

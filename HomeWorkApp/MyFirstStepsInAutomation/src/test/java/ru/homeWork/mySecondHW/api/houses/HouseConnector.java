@@ -5,7 +5,6 @@ import io.restassured.http.ContentType;
 import io.restassured.mapper.ObjectMapperType;
 import ru.homeWork.mySecondHW.api.houses.models.*;
 
-
 import java.util.List;
 
 public class HouseConnector {

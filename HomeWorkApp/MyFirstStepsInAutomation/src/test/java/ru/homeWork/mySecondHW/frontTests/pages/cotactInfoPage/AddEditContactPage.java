@@ -48,18 +48,18 @@ public class AddEditContactPage extends BasePage {
     }
 
     public AddEditContactPage fillContactData(ContactEntity contactEntityData) {
-        firstName.clear().fillData(contactEntityData.getName());
-        middleName.clear().fillData(contactEntityData.getMiddleName());
-        lastName.clear().fillData(contactEntityData.getLastName());
-        homePhone.clear().fillData(contactEntityData.getPhoneNumber());
-        mobilePhone.clear().fillData(contactEntityData.getMobileNumber());
-        email.clear().fillData(contactEntityData.getEmail());
-        birthDay.clear().fillData(DateHelper.transformLocalDateToString(contactEntityData.getBirthDate(), "dd.MM.yyyy"));
-        address1.clear().fillData(contactEntityData.getAddress1());
-        address2.clear().fillData(contactEntityData.getAddress2());
-        city.clear().fillData(contactEntityData.getCity());
-        country.clear().fillData(contactEntityData.getCountry());
-        postalCode.clear().fillData(contactEntityData.getPostCode());
+        firstName.fillData(contactEntityData.getName());
+        middleName.fillData(contactEntityData.getMiddleName());
+        lastName.fillData(contactEntityData.getLastName());
+        homePhone.fillData(contactEntityData.getPhoneNumber());
+        mobilePhone.fillData(contactEntityData.getMobileNumber());
+        email.fillData(contactEntityData.getEmail());
+        birthDay.fillData(DateHelper.transformLocalDateToString(contactEntityData.getBirthDate(), "dd.MM.yyyy"));
+        address1.fillData(contactEntityData.getAddress1());
+        address2.fillData(contactEntityData.getAddress2());
+        city.fillData(contactEntityData.getCity());
+        country.fillData(contactEntityData.getCountry());
+        postalCode.fillData(contactEntityData.getPostCode());
         return this;
     }
 

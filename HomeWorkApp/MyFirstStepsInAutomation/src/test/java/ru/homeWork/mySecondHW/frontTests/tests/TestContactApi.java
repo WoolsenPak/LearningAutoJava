@@ -33,6 +33,7 @@ public class TestContactApi extends BaseTestClass {
     private MainPage mainPage;
 
     private static final String API_URL = "http://localhost:12301/api.php";
+    private static final String IP_ADDRESS = "172.18.0.1";
 
     @BeforeClass
     public void prepareCondition() {
@@ -54,10 +55,9 @@ public class TestContactApi extends BaseTestClass {
                 .withCountry(faker.address().country())
                 .withPostCode(faker.number().digits(6));
 
-
         apiEntity = new ApiEntity()
                 .withName(String.format("name" + faker.number().digits(8)))
-                .withIpAddress("172.18.0.1");
+                .withIpAddress(IP_ADDRESS);
     }
 
     @Test

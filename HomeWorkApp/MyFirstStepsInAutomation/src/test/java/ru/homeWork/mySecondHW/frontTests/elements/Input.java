@@ -14,14 +14,9 @@ public class Input extends UiComponent {
     public Input fillData(String data) {
         element.click();
         String inputName = element.getAttribute("placeholder");
+        element.clear();
         element.sendKeys(data);
         logger.info("User click [Input:{}] and send data [{}]", inputName, data);
-        return this;
-    }
-
-    public Input clear() {
-        String inputName = element.getAttribute("placeholder");
-        element.clear();
         return this;
     }
 
