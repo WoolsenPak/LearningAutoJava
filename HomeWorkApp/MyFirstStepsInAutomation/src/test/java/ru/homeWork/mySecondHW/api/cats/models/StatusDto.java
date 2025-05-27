@@ -1,0 +1,9 @@
+package ru.homeWork.mySecondHW.api.cats.models;
+
+import lombok.Getter;
+
+@Getter
+public class StatusDto {
+    private Integer status;
+    private String message;
+}
